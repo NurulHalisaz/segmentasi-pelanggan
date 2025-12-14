@@ -75,7 +75,14 @@ st.pyplot(fig)
 # =========================
 # PROFIL CLUSTER
 # =========================
+st.subheader("Profil Rata-Rata Tiap Cluster")
 
+cluster_profile = df.groupby("cluster")[features].mean().round(2)
+st.dataframe(cluster_profile)
+
+# =========================
+# RADAR CHART PROFIL CLUSTER
+# =========================
 st.subheader("📊 Radar Chart Profil Tiap Cluster")
 
 radar_features = features.copy()
@@ -103,10 +110,6 @@ ax.set_title("Perbandingan Profil Cluster (Radar Chart)", y=1.1)
 ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.1))
 
 st.pyplot(fig)
-
-st.subheader("Profil Rata-Rata Tiap Cluster")
-cluster_profile = df.groupby("cluster")[features].mean().round(2)
-st.dataframe(cluster_profile)
 
 # =========================
 # INPUT DATA BARU
